@@ -5,8 +5,8 @@
 
 class  AppDelegate : private cocos2d::Application {
 public:
-    AppDelegate();
-    virtual ~AppDelegate();
+    AppDelegate() {};
+    virtual ~AppDelegate() {};
 
     /**
     @brief    Implement CCDirector and CCScene init code here.
