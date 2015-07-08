@@ -26,10 +26,15 @@ bool PanZoomLayer::init() {
   return true;
 }
 
+
 void PanZoomLayer::onEnter() {
   Layer::onEnter();
-  Director::getInstance()->getScheduler()->scheduleUpdateForTarget(this, 0, false);
-  this->setTouchEnabled(true);
+  Director::getInstance()->getScheduler()->scheduleUpdate(this, 0, false);
+  auto touchListener = EventListenerTouchAllAtOnce::create();
+  touchListener->onTouchesBegan = CC_CALLBACK_2(PanZoomLayer::onTouchesBegan, this);
+  touchListener->onTouchesMoved = CC_CALLBACK_2(PanZoomLayer::onTouchesMoved, this);
+  touchListener->onTouchesEnded = CC_CALLBACK_2(PanZoomLayer::onTouchesEnded, this);
+  this->_eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
 }
 
 void PanZoomLayer::onExit() {
