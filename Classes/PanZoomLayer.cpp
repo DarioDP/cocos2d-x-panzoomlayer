@@ -26,7 +26,6 @@ bool PanZoomLayer::init() {
   return true;
 }
 
-
 void PanZoomLayer::onEnter() {
   Layer::onEnter();
   Director::getInstance()->getScheduler()->scheduleUpdate(this, 0, false);
